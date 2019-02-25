@@ -71,6 +71,7 @@
           case 'БАС':
               $pr_1 = 'bas';
               break;
+
       }
 
       switch ($pr2) {
@@ -88,6 +89,9 @@
               break;
           case 'БАС':
               $pr_2 = 'bas';
+              break;
+          case 'NO':
+              $pr_2 = 'NO';
               break;
       }
 
@@ -107,6 +111,9 @@
           case 'БАС':
               $pr_3 = 'bas';
               break;
+          case 'NO':
+              $pr_3 = 'NO';
+              break;
       }
 
 
@@ -117,11 +124,11 @@
       {
       insert($pr_1, $id, $name, $phys, $math, $lang, $pr1, $pr2, $pr3, $diploma, $score);
     }
-    else if ((number($pr_2) < 3)||(minimum($pr_2) < $score))
+    else if (((number($pr_2) < 3)||(minimum($pr_2) < $score))&&($pr_2 != 'NO'))
               {
               insert($pr_2, $id, $name, $phys, $math, $lang, $pr1, $pr2, $pr3, $diploma, $score);
             }
-          else if ((number($pr_3) < 3)||(minimum($pr_3) < $score))
+          else if (((number($pr_3) < 3)||(minimum($pr_3) < $score))&&($pr_3 != 'NO'))
                     {
                     insert($pr_3, $id, $name, $phys, $math, $lang, $pr1, $pr2, $pr3, $diploma, $score);
                 }
@@ -152,10 +159,89 @@
         $query->execute([$row['score']]);
       }
 
+      function to($from)
+      {
+           $row = row($from);
+
+        $pr1 = $row['pr1'];
+         $pr2 = $row['pr2'];
+         $pr3 = $row['pr3'];
+
+         switch ($pr1) {
+             case 'ФИЗ':
+                 $pr_1 = 'phys';
+                 break;
+             case 'РФЗ':
+                 $pr_1 = 'radio';
+                 break;
+             case 'НМТ':
+                 $pr_1 = 'nmt';
+                 break;
+             case 'ПМФ':
+                 $pr_1 = 'pmph';
+                 break;
+             case 'БАС':
+                 $pr_1 = 'bas';
+                 break;
+         }
+
+         switch ($pr2) {
+             case 'ФИЗ':
+                 $pr_2 = 'phys';
+                 break;
+             case 'РФЗ':
+                 $pr_2 = 'radio';
+                 break;
+             case 'НМТ':
+                 $pr_2 = 'nmt';
+                 break;
+             case 'ПМФ':
+                 $pr_2 = 'pmph';
+                 break;
+             case 'БАС':
+                 $pr_2 = 'bas';
+                 break;
+             case 'NO':
+                 $pr_2 = 'outside';
+                 break;
+
+         }
+
+         switch ($pr3) {
+             case 'ФИЗ':
+                 $pr_3 = 'phys';
+                 break;
+             case 'РФЗ':
+                 $pr_3 = 'radio';
+                 break;
+             case 'НМТ':
+                 $pr_3 = 'nmt';
+                 break;
+             case 'ПМФ':
+                 $pr_3 = 'pmph';
+                 break;
+             case 'БАС':
+                 $pr_3 = 'bas';
+                 break;
+             case 'NO':
+                 $pr_3 = 'outside';
+                 break;
+         }
+
+         switch ($from) {
+             case $pr_1:
+                 $to = $pr_2;
+                 break;
+             case $pr_2:
+                $to = $pr_3;
+                 break;
+              }
+
+        return $to;
+      }
+
       function shift($from, $to)
       {
-
-      global $pr_1, $pr_2, $pr_3;
 
        $row = row($from);
 
@@ -204,6 +290,9 @@
            case 'БАС':
                $pr_2 = 'bas';
                break;
+           case 'NO':
+               $pr_2 = 'outside';
+               break;
        }
 
        switch ($pr3) {
@@ -222,51 +311,44 @@
            case 'БАС':
                $pr_3 = 'bas';
                break;
+           case 'NO':
+               $pr_3 = 'outside';
+               break;
        }
+
+
 
 
         insert($to, $id, $name, $phys, $math, $lang, $pr1, $pr2, $pr3, $diploma, $score);
 
         delete($from, $row);
+
+
       }
 
 
     if (number($pr_1)  > 3) {
-        $row = row($pr_1);
-
-        switch ($row['$pr2']) {
-            case 'ФИЗ':
-                $pr_2 = 'phys';
-                break;
-            case 'РФЗ':
-                $pr_2 = 'radio';
-                break;
-            case 'НМТ':
-                $pr_2 = 'nmt';
-                break;
-            case 'ПМФ':
-                $pr_2 = 'pmph';
-                break;
-            case 'БАС':
-                $pr_2 = 'bas';
-                break;
-        }
-
-        shift($pr_1, $pr_2);
-        if (number($pr_2) > 3) {
-            shift($pr_2, $pr_3);
-          if (number($pr_3) > 3) {
-                shift($pr_3, 'outside');
+        $to = to($pr_1);
+        shift($pr_1, $to);
+      //  $pr_2 = $to;
+        if ((number($to) > 3)&&($to != 'NO')) {
+            $pr_from = $to;
+            $to = to($pr_from);
+            shift($pr_from, $to);
+          //  $pr_3 = $to;
+          if ((number($to) > 3)&&($to != 'NO')) {
+              shift($to, 'outside');
             }
           }
       }
-          elseif (number($pr_2) > 3) {
-            shift($pr_2, $pr_3);
-            if (number($pr_3)  > 3) {
-              shift($pr_3, 'outside');
+          elseif ((number($pr_2) > 3)&&($pr_2 != 'NO')) {
+            $to = to($pr_2);
+            shift($pr_2, $to);
+            if (number($to)  > 3) {
+              shift($to, 'outside');
             }
           }
-              elseif (number($pr_3) > 3) {
+              elseif ((number($pr_3) > 3)&&($pr_3 != 'NO')) {
                 shift($pr_3, 'outside');
               }
 

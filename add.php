@@ -92,8 +92,8 @@
 
             <!--  <p>Приоритет 2:</p>-->
 
-               <label for="check2" >Приоритет 2: </label><input type="checkbox" class="check" id="check2">
               <p id="radiobox"  class="col-md-7 mb-5">
+                <label for="NO2" >Не выбран: </label><input type="radio" name="pr2" id="NO2"  value="NO" checked>
                 <label for="PHYS2" >ФИЗ: </label><input type="radio" name="pr2" id="PHYS2"  value="ФИЗ">
                 <label for="RADIO2" >РФЗ: </label><input type="radio" name="pr2" id="RADIO2"  value="РФЗ">
                 <label for="NMT2" >НМТ: </label><input type="radio" name="pr2" id="NMT2"  value="НМТ">
@@ -103,11 +103,8 @@
 
 
 
-
-
-
-                 <label for="check3" >Приоритет 3: </label><input type="checkbox" class="check" id="check3">
                <p id="radiobox"  class="col-md-7 mb-5">
+                   <label for="NO3" >Не выбран: </label><input type="radio" name="pr3" id="NO3"  value="NO" checked>
                  <label for="PHYS3" >ФИЗ: </label><input type="radio" name="pr3" id="PHYS3"  value="ФИЗ">
                  <label for="RADIO3" >РФЗ: </label><input type="radio" name="pr3" id="RADIO3"  value="РФЗ">
                  <label for="NMT3" >НМТ: </label><input type="radio" name="pr3" id="NMT3"  value="НМТ">
