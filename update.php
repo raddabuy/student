@@ -49,68 +49,8 @@ $user = 'root';
         $query->execute([$id, $name, $phys, $math, $lang, $pr1, $pr2, $pr3, $diploma, $score]);
       }
 
-      insert('list', $id, $name, $phys, $math, $lang, $pr1, $pr2, $pr3, $diploma, $score);
+      //insert('list', $id, $name, $phys, $math, $lang, $pr1, $pr2, $pr3, $diploma, $score);
 
-      switch ($pr1) {
-          case 'ФИЗ':
-              $pr_1 = 'phys';
-              break;
-          case 'РФЗ':
-              $pr_1 = 'radio';
-              break;
-          case 'НМТ':
-              $pr_1 = 'nmt';
-              break;
-          case 'ПМФ':
-              $pr_1 = 'pmph';
-              break;
-          case 'БАС':
-              $pr_1 = 'bas';
-              break;
-
-      }
-
-      switch ($pr2) {
-          case 'ФИЗ':
-              $pr_2 = 'phys';
-              break;
-          case 'РФЗ':
-              $pr_2 = 'radio';
-              break;
-          case 'НМТ':
-              $pr_2 = 'nmt';
-              break;
-          case 'ПМФ':
-              $pr_2 = 'pmph';
-              break;
-          case 'БАС':
-              $pr_2 = 'bas';
-              break;
-          case 'NO':
-              $pr_2 = 'NO';
-              break;
-      }
-
-      switch ($pr3) {
-          case 'ФИЗ':
-              $pr_3 = 'phys';
-              break;
-          case 'РФЗ':
-              $pr_3 = 'radio';
-              break;
-          case 'НМТ':
-              $pr_3 = 'nmt';
-              break;
-          case 'ПМФ':
-              $pr_3 = 'pmph';
-              break;
-          case 'БАС':
-              $pr_3 = 'bas';
-              break;
-          case 'NO':
-              $pr_3 = 'NO';
-              break;
-      }
 
 
       function row($table)
@@ -321,7 +261,77 @@ $sql_list = 'SELECT * FROM `list`' ;
 
     while ($row = $query_list->fetch(PDO::FETCH_OBJ)) {
 
+      $id = $row->id;
+      $name = $row->name;
+      $phys = $row->phys;
+      $math = $row->math;
+      $lang = $row->lang;
+      $pr1 = $row->pr1;
+      $pr2 = $row->pr2;
+      $pr3 = $row->pr3;
+      $diploma = $row->diploma;
+      $score = $row->score;
 
+      switch ($pr1) {
+          case 'ФИЗ':
+              $pr_1 = 'phys';
+              break;
+          case 'РФЗ':
+              $pr_1 = 'radio';
+              break;
+          case 'НМТ':
+              $pr_1 = 'nmt';
+              break;
+          case 'ПМФ':
+              $pr_1 = 'pmph';
+              break;
+          case 'БАС':
+              $pr_1 = 'bas';
+              break;
+
+      }
+
+      switch ($pr2) {
+          case 'ФИЗ':
+              $pr_2 = 'phys';
+              break;
+          case 'РФЗ':
+              $pr_2 = 'radio';
+              break;
+          case 'НМТ':
+              $pr_2 = 'nmt';
+              break;
+          case 'ПМФ':
+              $pr_2 = 'pmph';
+              break;
+          case 'БАС':
+              $pr_2 = 'bas';
+              break;
+          case 'NO':
+              $pr_2 = 'NO';
+              break;
+      }
+
+      switch ($pr3) {
+          case 'ФИЗ':
+              $pr_3 = 'phys';
+              break;
+          case 'РФЗ':
+              $pr_3 = 'radio';
+              break;
+          case 'НМТ':
+              $pr_3 = 'nmt';
+              break;
+          case 'ПМФ':
+              $pr_3 = 'pmph';
+              break;
+          case 'БАС':
+              $pr_3 = 'bas';
+              break;
+          case 'NO':
+              $pr_3 = 'NO';
+              break;
+      }
 
 
 
@@ -331,6 +341,7 @@ $sql_list = 'SELECT * FROM `list`' ;
 
 // insert($pr_1, $id, $name, $phys, $math, $lang, $pr1, $pr2, $pr3, $diploma, $score);
 //вставляем нового участника
+
 
 if ((number($pr_1) < 3)||(minimum($pr_1) < $score))
   {
