@@ -51,6 +51,7 @@
 </head>
 <body>
 
+  <p> <a href="index.php">Вернуться обратно</a></p>
 
       <div class="col-md-5 mb-5">
              <h4 class="mt-5">Добавить абитуриента</h4>
