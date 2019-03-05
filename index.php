@@ -15,6 +15,7 @@
               <p> <a href="add.php">Добавить абитуриента</a></p>
               <p> <a href="show.php">Вывести списки</a></p>
               <p> <a href="features.php">Изменить параметры приема</a></p>
+              <p> <a href="del.php">Удалить всё!!!</a></p>
 
           </div>
 

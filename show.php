@@ -35,6 +35,14 @@
     <tr>
       <th>Name</th>
       <th>Score</th>
+			<th>Phys</th>
+			<th>Math</th>
+			<th>Lang</th>
+			<th>Pr1</th>
+			<th>Pr2</th>
+			<th>Pr3</th>
+			<th></th>
+
     </tr>
   </thead>
   <tbody>
@@ -60,6 +68,12 @@
            echo '<tr>';
            echo '<td>' . $row->name . '</td>';
            echo '<td>' . $row->score . '</td>';
+					 echo '<td>' . $row->phys . '</td>';
+					 echo '<td>' . $row->math . '</td>';
+					 echo '<td>' . $row->lang . '</td>';
+					 echo '<td>' . $row->pr1 . '</td>';
+					 echo '<td>' . $row->pr2 . '</td>';
+					 echo '<td>' . $row->pr3 . '</td>';
           // echo  '<td> <a href="index.php">Редактировать</a> </td>';
           echo "<td>
             <a href='edit.php?id=$row->id'>
@@ -81,8 +95,15 @@
       <table class="table table-striped table-inverse">
     <thead>
     <tr>
-      <th>Name</th>
+			<th>Name</th>
       <th>Score</th>
+			<th>Phys</th>
+			<th>Math</th>
+			<th>Lang</th>
+			<th>Pr1</th>
+			<th>Pr2</th>
+			<th>Pr3</th>
+
     </tr>
     </thead>
     <tbody>
@@ -104,10 +125,16 @@
             $query->execute();
 
         // выводим в HTML-таблицу все данные клиентов из таблицы MySQL
-         while($row = $query->fetch(PDO::FETCH_ASSOC)){
+         while($row = $query->fetch(PDO::FETCH_OBJ)){
            echo '<tr>';
-           echo '<td>' . $row['name'] . '</td>';
-           echo '<td>' . $row['score'] . '</td>';
+					 echo '<td>' . $row->name . '</td>';
+					 echo '<td>' . $row->score . '</td>';
+					echo '<td>' . $row->phys . '</td>';
+					echo '<td>' . $row->math . '</td>';
+					echo '<td>' . $row->lang . '</td>';
+					echo '<td>' . $row->pr1 . '</td>';
+					echo '<td>' . $row->pr2 . '</td>';
+					echo '<td>' . $row->pr3 . '</td>';
         //   echo  '<td> <a href="index.php">Редактировать</a> </td>';
            echo '</tr>';
          }
@@ -124,8 +151,15 @@
       <table class="table table-striped table-inverse">
     <thead>
     <tr>
-      <th>Name</th>
-      <th>Score</th>
+			<th>Name</th>
+			<th>Score</th>
+			<th>Phys</th>
+			<th>Math</th>
+			<th>Lang</th>
+			<th>Pr1</th>
+			<th>Pr2</th>
+			<th>Pr3</th>
+
     </tr>
     </thead>
     <tbody>
@@ -147,10 +181,16 @@
             $query->execute();
 
         // выводим в HTML-таблицу все данные клиентов из таблицы MySQL
-         while($row = $query->fetch(PDO::FETCH_ASSOC)){
+         while($row = $query->fetch(PDO::FETCH_OBJ)){
            echo '<tr>';
-           echo '<td>' . $row['name'] . '</td>';
-           echo '<td>' . $row['score'] . '</td>';
+					 echo '<td>' . $row->name . '</td>';
+           echo '<td>' . $row->score . '</td>';
+					 echo '<td>' . $row->phys . '</td>';
+					 echo '<td>' . $row->math . '</td>';
+					 echo '<td>' . $row->lang . '</td>';
+					 echo '<td>' . $row->pr1 . '</td>';
+					 echo '<td>' . $row->pr2 . '</td>';
+					 echo '<td>' . $row->pr3 . '</td>';
           // echo  '<td> <a href="index.php">Редактировать</a> </td>';
            echo '</tr>';
          }
@@ -167,8 +207,15 @@
       <table class="table table-striped table-inverse">
     <thead>
     <tr>
-      <th>Name</th>
-      <th>Score</th>
+			<th>Name</th>
+			<th>Score</th>
+			<th>Phys</th>
+			<th>Math</th>
+			<th>Lang</th>
+			<th>Pr1</th>
+			<th>Pr2</th>
+			<th>Pr3</th>
+
     </tr>
     </thead>
     <tbody>
@@ -190,10 +237,16 @@
             $query->execute();
 
         // выводим в HTML-таблицу все данные клиентов из таблицы MySQL
-         while($row = $query->fetch(PDO::FETCH_ASSOC)){
+         while($row = $query->fetch(PDO::FETCH_OBJ)){
            echo '<tr>';
-           echo '<td>' . $row['name'] . '</td>';
-           echo '<td>' . $row['score'] . '</td>';
+					 echo '<td>' . $row->name . '</td>';
+					 echo '<td>' . $row->score . '</td>';
+					echo '<td>' . $row->phys . '</td>';
+					echo '<td>' . $row->math . '</td>';
+					echo '<td>' . $row->lang . '</td>';
+					echo '<td>' . $row->pr1 . '</td>';
+					echo '<td>' . $row->pr2 . '</td>';
+					echo '<td>' . $row->pr3 . '</td>';
            //echo  '<td> <a href="index.php">Редактировать</a> </td>';
            echo '</tr>';
          }
@@ -211,8 +264,15 @@
     <table class="table table-striped table-inverse">
   <thead>
   <tr>
-    <th>Name</th>
-    <th>Score</th>
+		<th>Name</th>
+		<th>Score</th>
+		<th>Phys</th>
+		<th>Math</th>
+		<th>Lang</th>
+		<th>Pr1</th>
+		<th>Pr2</th>
+		<th>Pr3</th>
+
   </tr>
   </thead>
   <tbody>
@@ -234,10 +294,16 @@
           $query->execute();
 
       // выводим в HTML-таблицу все данные клиентов из таблицы MySQL
-       while($row = $query->fetch(PDO::FETCH_ASSOC)){
+       while($row = $query->fetch(PDO::FETCH_OBJ)){
          echo '<tr>';
-         echo '<td>' . $row['name'] . '</td>';
-         echo '<td>' . $row['score'] . '</td>';
+				 echo '<td>' . $row->name . '</td>';
+				 echo '<td>' . $row->score . '</td>';
+				 echo '<td>' . $row->phys . '</td>';
+				 echo '<td>' . $row->math . '</td>';
+				 echo '<td>' . $row->lang . '</td>';
+				 echo '<td>' . $row->pr1 . '</td>';
+				 echo '<td>' . $row->pr2 . '</td>';
+				 echo '<td>' . $row->pr3 . '</td>';
         // echo  '<td> <a href="index.php">Редактировать</a> </td>';
          echo '</tr>';
        }
@@ -256,8 +322,15 @@
       <table class="table table-striped table-inverse">
     <thead>
     <tr>
-      <th>Name</th>
+			<th>Name</th>
       <th>Score</th>
+			<th>Phys</th>
+			<th>Math</th>
+			<th>Lang</th>
+			<th>Pr1</th>
+			<th>Pr2</th>
+			<th>Pr3</th>
+
     </tr>
     </thead>
     <tbody>
@@ -279,10 +352,16 @@
             $query->execute();
 
         // выводим в HTML-таблицу все данные клиентов из таблицы MySQL
-         while($row = $query->fetch(PDO::FETCH_ASSOC)){
+         while($row = $query->fetch(PDO::FETCH_OBJ)){
            echo '<tr>';
-           echo '<td>' . $row['name'] . '</td>';
-           echo '<td>' . $row['score'] . '</td>';
+					 echo '<td>' . $row->name . '</td>';
+           echo '<td>' . $row->score . '</td>';
+					 echo '<td>' . $row->phys . '</td>';
+					 echo '<td>' . $row->math . '</td>';
+					 echo '<td>' . $row->lang . '</td>';
+					 echo '<td>' . $row->pr1 . '</td>';
+					 echo '<td>' . $row->pr2 . '</td>';
+					 echo '<td>' . $row->pr3 . '</td>';
            //echo  '<td> <a href="index.php">Редактировать</a> </td>';
            echo '</tr>';
          }
@@ -300,8 +379,15 @@
       <table class="table table-striped table-inverse">
     <thead>
     <tr>
-      <th>Name</th>
-      <th>Score</th>
+			<th>Name</th>
+			<th>Score</th>
+			<th>Phys</th>
+			<th>Math</th>
+			<th>Lang</th>
+			<th>Pr1</th>
+			<th>Pr2</th>
+			<th>Pr3</th>
+
     </tr>
     </thead>
     <tbody>
@@ -323,10 +409,16 @@
             $query->execute();
 
         // выводим в HTML-таблицу все данные клиентов из таблицы MySQL
-         while($row = $query->fetch(PDO::FETCH_ASSOC)){
+         while($row = $query->fetch(PDO::FETCH_OBJ)){
            echo '<tr>';
-           echo '<td>' . $row['name'] . '</td>';
-           echo '<td>' . $row['score'] . '</td>';
+					 echo '<td>' . $row->name . '</td>';
+					 echo '<td>' . $row->score . '</td>';
+					echo '<td>' . $row->phys . '</td>';
+					echo '<td>' . $row->math . '</td>';
+					echo '<td>' . $row->lang . '</td>';
+					echo '<td>' . $row->pr1 . '</td>';
+					echo '<td>' . $row->pr2 . '</td>';
+					echo '<td>' . $row->pr3 . '</td>';
            //echo  '<td> <a href="index.php">Редактировать</a> </td>';
            echo '</tr>';
          }

@@ -55,6 +55,11 @@
 
       insert('list', $id, $name, $phys, $math, $lang, $pr1, $pr2, $pr3, $diploma, $score);
 
+
+      //if (($diploma == "Да")||($diploma == "Да")) {
+
+
+
       switch ($pr1) {
           case 'ФИЗ':
               $pr_1 = 'phys';
@@ -120,15 +125,15 @@
     // insert($pr_1, $id, $name, $phys, $math, $lang, $pr1, $pr2, $pr3, $diploma, $score);
     //вставляем нового участника
 
-  if ((number($pr_1) < 3)||(minimum($pr_1) < $score))
+  if ((number($pr_1) < 3)||(minimum($pr_1) <= $score))
       {
       insert($pr_1, $id, $name, $phys, $math, $lang, $pr1, $pr2, $pr3, $diploma, $score);
     }
-    else if (((number($pr_2) < 3)||(minimum($pr_2) < $score))&&($pr_2 != 'NO'))
+    else if (((number($pr_2) < 3)||(minimum($pr_2) <= $score))&&($pr_2 != 'NO'))
               {
               insert($pr_2, $id, $name, $phys, $math, $lang, $pr1, $pr2, $pr3, $diploma, $score);
             }
-          else if (((number($pr_3) < 3)||(minimum($pr_3) < $score))&&($pr_3 != 'NO'))
+          else if (((number($pr_3) < 3)||(minimum($pr_3) <= $score))&&($pr_3 != 'NO'))
                     {
                     insert($pr_3, $id, $name, $phys, $math, $lang, $pr1, $pr2, $pr3, $diploma, $score);
                 }
@@ -148,15 +153,36 @@
         $query_gold  = $pdo->prepare($sql_gold);
         $query_gold ->execute();
         $row = $query_gold->fetch(PDO::FETCH_ASSOC);
+
+        $sql_gold = 'SELECT * FROM '.$table. ' WHERE `score` = ? ORDER BY `phys` ASC';
+        $query_gold  = $pdo->prepare($sql_gold);
+        $query_gold ->execute([$row['score']]);
+        $row = $query_gold->fetch(PDO::FETCH_ASSOC);
+
+        $sql_gold = 'SELECT * FROM '.$table. ' WHERE `phys` = ? ORDER BY `math` ASC';
+        $query_gold  = $pdo->prepare($sql_gold);
+        $query_gold ->execute([$row['phys']]);
+        $row = $query_gold->fetch(PDO::FETCH_ASSOC);
+
+        $sql_gold = 'SELECT * FROM '.$table. ' WHERE `math` = ? ORDER BY `lang` ASC';
+        $query_gold  = $pdo->prepare($sql_gold);
+        $query_gold ->execute([$row['math']]);
+        $row = $query_gold->fetch(PDO::FETCH_ASSOC);
+
+        /*$sql_gold = 'SELECT * FROM '.$table. ' WHERE `phys` = ?';
+        $query_gold  = $pdo->prepare($sql_gold);
+        $query_gold ->execute([$row['phys']]);
+        $row = $query_gold->fetch(PDO::FETCH_ASSOC);*/
+      //  $min = $row[`score`];
         return $row;
       }
 
       function delete($table, $row)
       {
         global $pdo;
-        $sql = 'DELETE FROM '.$table.' where `score` = ?';
+        $sql = 'DELETE FROM '.$table.' where `id` = ?';
         $query = $pdo->prepare($sql);
-        $query->execute([$row['score']]);
+        $query->execute([$row['id']]);
       }
 
       function to($from)
@@ -331,26 +357,38 @@
         $to = to($pr_1);
         shift($pr_1, $to);
       //  $pr_2 = $to;
-        if ((number($to) > 3)&&($to != 'NO')) {
+        if ((number($to) > 3)&&($to != 'outside')) {
             $pr_from = $to;
             $to = to($pr_from);
             shift($pr_from, $to);
           //  $pr_3 = $to;
-          if ((number($to) > 3)&&($to != 'NO')) {
+          if ((number($to) > 3)&&($to != 'outside')) {
               shift($to, 'outside');
             }
           }
       }
-          elseif ((number($pr_2) > 3)&&($pr_2 != 'NO')) {
+          elseif ((number($pr_2) > 3)&&($pr_2 != 'outside')) {
             $to = to($pr_2);
             shift($pr_2, $to);
             if (number($to)  > 3) {
               shift($to, 'outside');
             }
           }
-              elseif ((number($pr_3) > 3)&&($pr_3 != 'NO')) {
+              elseif ((number($pr_3) > 3)&&($pr_3 != 'outside')) {
                 shift($pr_3, 'outside');
               }
+
+
+              $sql_gold = 'SELECT * FROM `list` ORDER BY `score` DESC';
+              $query_gold  = $pdo->prepare($sql_gold);
+              $query_gold ->execute();
+              //$row = $query_gold->fetch(PDO::FETCH_ASSOC);
+            /*  $min = $row['score'];
+
+              $sql_gold = 'SELECT * FROM '.$table. ' where `score`=? ORDER BY `phys` DESC';
+              $query_gold  = $pdo->prepare($sql_gold);
+              $query_gold ->execute([$min]);*/
+//}
 
     header('Location:add.php');
 

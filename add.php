@@ -82,7 +82,7 @@
                <h6>Приоритет 1:</h6>
 
               <p class="col-md-7 mb-5">
-                <label for="PHYS">ФИЗ: </label><input type="radio" name="pr1" id="PHYS" value="ФИЗ">
+                <label for="PHYS">ФИЗ: </label><input type="radio" name="pr1" id="PHYS" value="ФИЗ" checked>
                <label for="RADIO">РФЗ: </label><input type="radio" name="pr1" id="RADIO" value="РФЗ">
                <label for="NMT">НМТ: </label><input type="radio" name="pr1" id="NMT" value="НМТ">
                <label for="PMPH">ПМФ: </label><input type="radio" name="pr1" id="PMPH" value="ПМФ">
